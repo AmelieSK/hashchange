@@ -1,8 +1,11 @@
 require 'date'
 # comment
 class Account
+  attr_reader :balance, :transactions
+
   def initialize
     @balance = 0
+    @transactions = []
   end
 
   def date
@@ -11,5 +14,11 @@ class Account
 
   def deposit(amount)
     @balance += amount
+    @transactions << [date, amount, " ", @balance]
+  end
+
+  def withdrawal(amount)
+    @balance -= amount
+    @transactions << [[date, " ", amount, @balance]]
   end
 end

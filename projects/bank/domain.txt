@@ -15,6 +15,26 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 
 object: Account
-properties: date, balance, amount / array?
+properties: date, balance, amount
 methods: .deposit, .withdrawal, .balance
 action: 
+
+RSpec.describe Bank do
+  subject(:bank) { described_class.new }
+  let(:an_amount) { 1000 }
+  let(:a_date) { '12/03/2019' }
+  let(:type) { ' ' }
+
+  context('Transaction details') do
+    it('records date, amount, credit and balance on deposit') do
+      allow(bank).to receive(:date).and_return(a_date)
+      bank.deposit(an_amount)
+      expect(bank.transactions).to eq([[a_date, an_amount, type, bank.balance]])
+    end
+    it('records date, debit, amount and balance on withdrawal') do
+      allow(bank).to receive(:date).and_return(a_date)
+      bank.deposit(an_amount)
+      bank.withdraw(500)
+      expect(bank.transactions[1]).to eq([a_date, type, 500, bank.balance])
+    end
+

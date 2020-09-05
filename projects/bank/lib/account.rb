@@ -14,11 +14,11 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    @transactions << [date, amount, " ", @balance]
+    @transactions << [date, amount, ' ', @balance]
   end
 
   def withdrawal(amount)
     @balance -= amount
-    @transactions << [date, " ", amount, @balance]
+    @transactions << [date, ' ', amount, @balance]
   end
 end

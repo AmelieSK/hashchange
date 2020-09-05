@@ -3,8 +3,8 @@ require 'date'
 
 class Statement
 
-  def initialize(account = Account.new)
-    @account = account
+  def initialize(transactions_arr)
+    @transactions_arr = transactions_arr
   end
 
   def print_description
@@ -19,7 +19,7 @@ class Statement
   private
 
   def print_reverse
-    @account.transactions.reverse!.each do |transaction| 
+    @transactions_arr.reverse!.each do |transaction| 
       puts transaction.join(' || ') 
     end
   end

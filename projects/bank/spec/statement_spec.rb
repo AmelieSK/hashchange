@@ -2,8 +2,8 @@ require 'statement'
 
 RSpec.describe Statement do
   let(:an_account) { instance_double('An account', transactions: [['10/01/2012', 1000, ' ', 1000]]) }
-  subject(:statement) { described_class.new(an_account) }  
-  
+  subject(:statement) { described_class.new(an_account.transactions) }  
+
   describe '#print_description' do
     it 'prints the description' do
       expect{subject.print_description}.to output("date || credit || debit || balance\n").to_stdout

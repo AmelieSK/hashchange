@@ -9,7 +9,7 @@ class Account
   end
 
   def date
-    Date.today
+    Date.today.strftime('%d/%m/%Y')
   end
 
   def deposit(amount)
@@ -19,6 +19,6 @@ class Account
 
   def withdrawal(amount)
     @balance -= amount
-    @transactions << [[date, " ", amount, @balance]]
+    @transactions << [date, " ", amount, @balance]
   end
 end

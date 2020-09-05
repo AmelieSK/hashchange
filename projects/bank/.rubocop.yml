@@ -33,9 +33,13 @@ Lint/TopLevelReturnWithArgument:
   Enabled: false
 Lint/UnreachableLoop:
   Enabled: false
+Metrics/BlockLength:
+  Enabled: false
 Style/AccessorGrouping:
   Enabled: false
 Style/ArrayCoercion:
+  Enabled: false
+Style/BlockComments:
   Enabled: false
 Style/BisectedAttrAccessor:
   Enabled: false

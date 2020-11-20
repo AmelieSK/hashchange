@@ -1,5 +1,5 @@
 describe('Game', () => {
-  let score
+  let game
   beforeEach(() => {
     game = new Game()
   })
@@ -32,6 +32,29 @@ describe('Game', () => {
     }
     expect(game.score()).toEqual(20)
     })
+
+    it('it calculated the correct score when a spare is rolled', () => {
+      game.roll(5);
+      game.roll(5);
+      game.roll(3);
+      rollMany(0, 17);
+      expect(game.score()).toEqual(16)
+    })
+
+    it('should return the correct score when a strike is rolled', () => {
+      game.roll(10);
+      game.roll(1);
+      game.roll(1);
+      rollMany(0, 17);
+      expect(game.score()).toEqual(14)
+    })
+
+    function rollMany(num, rolls) {
+      for(let i = 0; i < rolls; i ++) {
+        game.roll(num);
+      }
+    }
+
   })
 
 });
